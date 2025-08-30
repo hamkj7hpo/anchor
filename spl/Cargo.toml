@@ -12,7 +12,6 @@ name = "anchor_spl"
 
 [features]
 default = []
-dex = []
 gated-token = []
 metadata = []
 token = []
