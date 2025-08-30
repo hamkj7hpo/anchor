@@ -1,23 +1,35 @@
 [package]
 name = "anchor-spl"
 version = "0.30.1"
-description = "Anchor SPL - Solana Program Library programs for Anchor"
+description = "Anchor CPI programs for Solana Program Library"
 authors = ["Anchor Maintainers"]
 repository = "https://github.com/hamkj7hpo/anchor"
-license = "Apache-2.0"
 edition = "2021"
+license = "Apache-2.0"
+
+[lib]
+name = "anchor_spl"
 
 [features]
 default = []
-cpi = ["anchor-lang/cpi"]
+dex = []
+gated-token = []
+metadata = []
+token = []
+associated-token = []
+token-2022 = []
 
 [dependencies]
 anchor-lang = { git = "https://github.com/hamkj7hpo/anchor.git", branch = "safe-pump-compat" }
 solana-program = { git = "https://github.com/hamkj7hpo/solana.git", branch = "safe-pump-compat" }
-spl-token = { git = "https://github.com/hamkj7hpo/solana-program-library.git", branch = "safe-pump-compat", package = "spl-token", features = ["no-entrypoint"] }
 spl-associated-token-account = { git = "https://github.com/hamkj7hpo/associated-token-account.git", branch = "safe-pump-compat", default-features = false }
-spl-token-2022 = { git = "https://github.com/hamkj7hpo/token-2022.git", branch = "safe-pump-compat", package = "spl-token-2022", default-features = false }
-
-[lib]
-crate-type = ["cdylib", "lib"]
-name = "anchor_spl"
+spl-discriminator = { git = "https://github.com/hamkj7hpo/solana-program-library.git", branch = "safe-pump-compat", package = "spl-discriminator", optional = true }
+spl-pod = { git = "https://github.com/hamkj7hpo/spl-pod.git", branch = "safe-pump-compat", optional = true }
+spl-program-error = { git = "https://github.com/hamkj7hpo/solana-program-library.git", branch = "safe-pump-compat", package = "spl-program-error", optional = true }
+spl-token-2022 = { git = "https://github.com/hamkj7hpo/token-2022.git", branch = "safe-pump-compat", package = "spl-token-2022", optional = true, default-features = false }
+spl-token = { git = "https://github.com/hamkj7hpo/solana-program-library.git", branch = "safe-pump-compat", package = "spl-token", optional = true, features = ["no-entrypoint"] }
+spl-token-group-interface = { git = "https://github.com/hamkj7hpo/token-group.git", branch = "safe-pump-compat", package = "spl-token-group-interface", optional = true }
+spl-token-metadata-interface = { git = "https://github.com/hamkj7hpo/token-metadata.git", branch = "safe-pump-compat", package = "spl-token-metadata-interface", optional = true }
+spl-transfer-hook-interface = { git = "https://github.com/hamkj7hpo/transfer-hook.git", branch = "safe-pump-compat", package = "spl-transfer-hook-interface", optional = true }
+spl-type-length-value = { git = "https://github.com/hamkj7hpo/spl-type-length-value.git", branch = "safe-pump-compat", package = "spl-type-length-value", optional = true }
+bytemuck = { version = "1.18.0", optional = true }
