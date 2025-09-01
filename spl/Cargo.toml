@@ -1,41 +1,44 @@
 [package]
 name = "anchor-spl"
 version = "0.30.1"
-description = "Anchor CPI programs for Solana Program Library"
-authors = ["Anchor Maintainers"]
-repository = "https://github.com/hamkj7hpo/anchor"
 edition = "2021"
-license = "Apache-2.0"
+description = "Anchor SPL - utility library for Solana Anchor programs to interface with SPL programs"
+repository = "https://github.com/hamkj7hpo/anchor"
+license = "Apache-2.0 OR MIT"
+documentation = "https://docs.rs/anchor-spl"
 
 [lib]
-name = "anchor_spl"
+doctest = false
 
 [features]
-default = []
-gated-token = []
-metadata = []
-token = []
-associated-token = []
-token-2022 = []
+default = ["token", "associated-token"]
+dex = ["serum-dex"]
+gated-token = ["spl-token-group-interface"]
+metadata = ["mpl-token-metadata"]
+token = ["spl-token"]
+token-2022 = ["spl-token-2022"]
+associated-token = ["spl-associated-token-account"]
+token-group = ["spl-token-group-interface"]
+transfer-hook = ["spl-transfer-hook-interface"]
 memo = ["spl-memo"]
 
 [dependencies]
-anchor-lang = { git = "https://github.com/hamkj7hpo/anchor.git", rev = "29865960ec86579ad40fcd1b3cb9d5a6d81b5401" }
-solana-program = { git = "https://github.com/hamkj7hpo/solana.git", rev = "bcc398b87fbe0905d1a847cb94a264ecfaa5e95d" }
-spl-associated-token-account = { git = "https://github.com/hamkj7hpo/associated-token-account.git", rev = "e8d16e4e762e9ff008fc0c3da2e997b2f949a727", default-features = false, optional = true }
-spl-discriminator = { git = "https://github.com/hamkj7hpo/solana-program-library.git", rev = "f86fefd752bc4ca50adc8f06cd9ba579326c769e", package = "spl-discriminator", optional = true }
-spl-pod = { git = "https://github.com/hamkj7hpo/spl-pod.git", rev = "5d5ef3ff0e782dc6b22ddc15d08caa05e173abeb", default-features = false, optional = true }
-spl-program-error = { git = "https://github.com/hamkj7hpo/solana-program-library.git", rev = "f86fefd752bc4ca50adc8f06cd9ba579326c769e", package = "spl-program-error", optional = true }
-spl-token-2022 = { git = "https://github.com/hamkj7hpo/token-2022.git", rev = "8e65bc7ef9b22a5f0765c22e4b2ae4b3652bc2b6", package = "spl-token-2022", default-features = false, optional = true }
-spl-token = { git = "https://github.com/hamkj7hpo/solana-program-library.git", rev = "f86fefd752bc4ca50adc8f06cd9ba579326c769e", package = "spl-token", optional = true }
-spl-memo = { git = "https://github.com/hamkj7hpo/memo.git", rev = "8b68bff69ad2616c511f58c16e7588e8997c076c", package = "spl-memo", version = "6.0.0", optional = true }
-spl-token-group-interface = { git = "https://github.com/hamkj7hpo/token-group.git", rev = "decb8c063443bbd67ad7d00e7fbfab3a76029620", package = "spl-token-group-interface", optional = true }
-spl-token-metadata-interface = { git = "https://github.com/hamkj7hpo/token-metadata.git", rev = "fcb4a1c79576a6d4eb8dea8dd38b370529dda008", package = "spl-token-metadata-interface", optional = true }
-spl-transfer-hook-interface = { git = "https://github.com/hamkj7hpo/transfer-hook.git", rev = "7be529916806e8693d6fb2622db31e5d463e9f79", package = "spl-transfer-hook-interface", optional = true }
-spl-type-length-value = { git = "https://github.com/hamkj7hpo/spl-type-length-value.git", rev = "4b3bbe88bfdea370b16e20b96e5145035580d2c6", package = "spl-type-length-value", optional = true }
-solana-zk-sdk = { git = "https://github.com/hamkj7hpo/zk-elgamal-proof.git", rev = "f5d007f3058d8744b6d9806d261b76422c94123e", package = "solana-zk-sdk", optional = true }
-bytemuck = { version = "1.18.0", optional = true }
+anchor-lang = { path = "../lang", version = "0.30.1" }
+solana-program = { git = "https://github.com/solana-labs/solana.git", rev = "b1e378009ffee4c75965723d3317fccbebcf2524" }
+spl-token = { version = "4.0", optional = true }
+spl-token-2022 = { git = "https://github.com/hamkj7hpo/token-2022.git", rev = "8e65bc7ef9b22a5f0765c22e4b2ae4b3652bc2b6", optional = true, default-features = false }
+spl-associated-token-account = { git = "https://github.com/hamkj7hpo/associated-token-account.git", rev = "e8d16e4e762e9ff008fc0c3da2e997b2f949a727", optional = true, default-features = false }
+mpl-token-metadata = { version = "4.1.2", optional = true }
+serum-dex = { version = "0.5.6", optional = true, features = ["no-entrypoint"] }
+spl-token-group-interface = { git = "https://github.com/hamkj7hpo/token-group.git", rev = "decb8c063443bbd67ad7d00e7fbfab3a76029620", optional = true }
+spl-transfer-hook-interface = { git = "https://github.com/hamkj7hpo/transfer-hook.git", rev = "7be529916806e8693d6fb2622db31e5d463e9f79", optional = true }
+spl-memo = { git = "https://github.com/hamkj7hpo/memo.git", rev = "8b68bff69ad2616c511f58c16e7588e8997c076c", version = "6.0.0", optional = true }
+bytemuck = { version = "1.18.0", features = ["derive"] }
 
-[dev-dependencies]
-solana-program-test = { git = "https://github.com/hamkj7hpo/solana.git", rev = "bcc398b87fbe0905d1a847cb94a264ecfaa5e95d" }
-solana-sdk = { git = "https://github.com/hamkj7hpo/solana.git", rev = "bcc398b87fbe0905d1a847cb94a264ecfaa5e95d" }
+[patch.crates-io]
+solana-program = { git = "https://github.com/solana-labs/solana.git", rev = "b1e378009ffee4c75965723d3317fccbebcf2524" }
+spl-token-2022 = { git = "https://github.com/hamkj7hpo/token-2022.git", rev = "8e65bc7ef9b22a5f0765c22e4b2ae4b3652bc2b6", default-features = false }
+spl-associated-token-account = { git = "https://github.com/hamkj7hpo/associated-token-account.git", rev = "e8d16e4e762e9ff008fc0c3da2e997b2f949a727", default-features = false }
+spl-token-group-interface = { git = "https://github.com/hamkj7hpo/token-group.git", rev = "decb8c063443bbd67ad7d00e7fbfab3a76029620" }
+spl-transfer-hook-interface = { git = "https://github.com/hamkj7hpo/transfer-hook.git", rev = "7be529916806e8693d6fb2622db31e5d463e9f79" }
+spl-memo = { git = "https://github.com/hamkj7hpo/memo.git", rev = "8b68bff69ad2616c511f58c16e7588e8997c076c", version = "6.0.0" }
