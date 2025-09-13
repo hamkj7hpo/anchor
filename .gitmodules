@@ -7,8 +7,8 @@
 	url = ssh://git@github.com/project-serum/stake.git
     branch = master
 [submodule "examples/cfo/deps/swap"]
-    path = examples/cfo/deps/swap
-    url = ssh://git@github.com/project-serum/swap.git
+	path = examples/cfo/deps/swap
+	url = ssh://git@github.com/project-serum/swap.git
     branch = master
 [submodule "examples/cfo/deps/serum-dex"]
     path = examples/cfo/deps/serum-dex
