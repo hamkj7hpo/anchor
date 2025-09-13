@@ -11,6 +11,6 @@
 	url = ssh://git@github.com/project-serum/swap.git
     branch = master
 [submodule "examples/cfo/deps/serum-dex"]
-    path = examples/cfo/deps/serum-dex
-    url = ssh://git@github.com/project-serum/serum-dex.git
+	path = examples/cfo/deps/serum-dex
+	url = ssh://git@github.com/project-serum/serum-dex.git
     branch = master
