@@ -1,6 +1,6 @@
 [submodule "examples/cfo/deps/openbook-dex"]
-    path = examples/cfo/deps/openbook-dex
-    url = ssh://git@github.com/openbook-dex/program.git
+	path = examples/cfo/deps/openbook-dex
+	url = ssh://git@github.com/openbook-dex/program.git
     branch = master
 [submodule "examples/cfo/deps/stake"]
     path = examples/cfo/deps/stake
